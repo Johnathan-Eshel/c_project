@@ -1,24 +1,26 @@
+#include <stdlib.h>
 
 
-
-
-typedef struct {
+typedef struct sym_table {
 	char* label;
-	Symboltable* next;
-}Symboltable;
+	struct sym_table* next;
+} Symboltable;
 
-void create_symbol_table(){
-	Symboltable head;
-	head.next = NULL;
-	head.value = NULL;
+static Symboltable *head;
 
 
-}
+//void create_symbol_table(){
+//	Symboltable head;
+//	head.next = NULL;
+//	head.value = NULL;
+//
+//
+//}
 
 int add_to_symbolTable(char *name){
 	int i;
-	Symboltable sym = head;
-	for (i = 0; sym.next != NULL; sym = sym.next){}
+	Symboltable *sym = head;
+	for (i = 0; sym->next != NULL; sym = sym->next){}
 
 	
 	

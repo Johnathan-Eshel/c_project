@@ -33,8 +33,25 @@ int sending_method(char* word1 , char* word2 , char* command){//checks which add
 
 }
 
+char* checklabel(char* line){
+	char res[80];
+	char c = ' ';
+	char *p;
+	int length;
+	p = strchr(line, ':');
+	if (p != NULL){
+		length = p - line; //p is a pointer to the ':' ch, whichar meants that the label is between p and the start
+		strncpy(res, line, length);
+		res[length] = '\0';
+		return res;
+	}
+	else return NULL;
+}
+
+
 int read_operands(char* line, char* word1, char* word2){
 	int i = 0, num = 2; //num is how many operands there are
+	if (checklabel) i = strlen(checklabel(line)); //if there's a label, start reading from after the label
 	read_word(line, &i, word1);
 	skip(line, &i);
 
@@ -125,20 +142,6 @@ int string_to_enum(char* command){
 		break;
 	}
 }*/
-
-char* checklabel(char* line, char* res){
-	char c = ' ';
-	char *p;
-	int length;
-	p = strchr(line, ':');
-	if (p != NULL){
-		length = p - line; //p is a pointer to the ':' ch, whichar meants that the label is between p and the start
-		strncpy(res, line, length);
-		res[length] = '\0';
-		return res;
-	}
-	else return NULL;
-}
 
 /*enum prefix { PREFIX_NONE, PREFIX_DATA, PREFIX_STRING};
 

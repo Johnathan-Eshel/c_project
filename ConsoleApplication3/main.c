@@ -62,10 +62,10 @@ void print_string(char* line){
 ////////
 int main(){
 	char res[80];
-	char* word1, word2;
+	char word1[80], word2[80];
 	int i = 0;
 	char *a = "MOV:  1 , 2";
 
 	read_operands(a, word1, word2);
-	printf("%s \n\n", res);
+	printf("%s  \n\n\n\n\n\n\n\n %s", word1 , word2);
 }
